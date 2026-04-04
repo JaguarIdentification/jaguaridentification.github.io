@@ -279,6 +279,19 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Key Results</h2>
 
+    <!-- Scatter plot: before table -->
+    <div class="columns is-centered">
+      <div class="column is-10">
+        <figure class="image">
+          <img src="static/images/fig5_bgfg_vs_mirror_scatter.png"
+               alt="BG/FG vs Mirror Similarity scatter plot">
+          <figcaption class="has-text-centered is-size-7 mt-2">
+            <strong>Relationship between shortcut axes.</strong> No clear monotonic association (Spearman &rho; = 0.152, p = 0.605). Models robust on one axis can be brittle on the other.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
     <div class="columns is-centered">
       <div class="column is-10">
         <h3 class="title is-5">Frozen Baseline Benchmark</h3>
@@ -323,23 +336,14 @@
       </div>
     </div>
 
-    <!-- Figures Row -->
+    <!-- Bar chart: after table -->
     <div class="columns is-centered">
-      <div class="column is-5">
+      <div class="column is-10">
         <figure class="image">
           <img src="static/images/fig3_bgfg_bar_chart.png"
                alt="Foreground vs inpainted background mAP across frozen models">
           <figcaption class="has-text-centered is-size-7 mt-2">
             <strong>Foreground vs. inpainted background mAP.</strong> Green: foreground-only mAP; red: inpainted background-only mAP. Models sorted by BG/FG ratio.
-          </figcaption>
-        </figure>
-      </div>
-      <div class="column is-5">
-        <figure class="image">
-          <img src="static/images/fig5_bgfg_vs_mirror_scatter.png"
-               alt="BG/FG vs Mirror Similarity scatter plot">
-          <figcaption class="has-text-centered is-size-7 mt-2">
-            <strong>Relationship between shortcut axes.</strong> No clear monotonic association (Spearman &rho; = 0.152, p = 0.605). Models robust on one axis can be brittle on the other.
           </figcaption>
         </figure>
       </div>
