@@ -1,0 +1,291 @@
+/* Custom styles for Jaguar Re-ID Project Page */
+/* Inspired by gorilla-watch.github.io and nerfies.github.io */
+
+:root {
+  --primary-color: #2b6c3e;
+  --primary-dark: #1e4d2c;
+  --accent-color: #d4a017;
+  --text-color: #363636;
+  --text-muted: #6b7280;
+  --bg-light: #f7f7f7;
+  --bg-white: #ffffff;
+  --border-color: #e5e7eb;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Typography */
+body {
+  font-family: 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text-color);
+}
+
+.publication-title {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.title-second-line {
+  font-size: 0.75em;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+  padding-top: 2rem;
+}
+
+.hero .hero-body {
+  padding-bottom: 1rem;
+}
+
+/* Author styling */
+.publication-authors {
+  margin-bottom: 0.5rem;
+}
+
+.publication-authors .author-block {
+  display: inline-block;
+  margin-right: 0.25rem;
+}
+
+.publication-authors .author-block a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.publication-authors .author-block a:hover {
+  text-decoration: underline;
+}
+
+.publication-authors sup {
+  font-size: 0.7em;
+  color: var(--text-muted);
+}
+
+/* Publication link buttons */
+.publication-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.link-block .button {
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.link-block .button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.link-block .button .icon {
+  margin-right: 0.25rem;
+}
+
+/* Teaser */
+.hero.teaser {
+  padding-top: 0;
+}
+
+.hero.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 2rem;
+}
+
+.teaser-image {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 1.5rem;
+}
+
+.hero.teaser .subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Sections */
+.section {
+  padding: 3rem 1.5rem;
+}
+
+.section:nth-child(even) {
+  background-color: var(--bg-light);
+}
+
+.section .title.is-3 {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  margin-bottom: 2rem;
+}
+
+/* Contribution items */
+.contribution-item {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: var(--bg-white);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease;
+}
+
+.contribution-item:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.contribution-item .title.is-5 {
+  color: var(--primary-dark);
+  margin-bottom: 0.75rem;
+}
+
+/* Axis boxes */
+.axis-box {
+  height: 100%;
+  border-top: 3px solid var(--primary-color);
+  transition: box-shadow 0.2s ease;
+}
+
+.axis-box:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.axis-box .title.is-5 {
+  color: var(--primary-dark);
+}
+
+/* Framework figure */
+.framework-figure {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 1.5rem;
+}
+
+/* Results table */
+.results-table {
+  font-size: 0.9rem;
+}
+
+.results-table thead th {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  border-color: var(--primary-dark);
+  white-space: nowrap;
+}
+
+.results-table tbody td {
+  vertical-align: middle;
+}
+
+/* BG/FG color coding */
+.bgfg-low {
+  color: #166534;
+  font-weight: 600;
+}
+
+.bgfg-med {
+  color: #a16207;
+  font-weight: 600;
+}
+
+.bgfg-high {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+/* Delta row */
+.delta-row {
+  font-style: italic;
+  background-color: #f9fafb;
+}
+
+/* Figures */
+figure.image {
+  margin-bottom: 1.5rem;
+}
+
+figure.image img {
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+figcaption {
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* BibTeX */
+#bibtex pre {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  font-size: 0.85rem;
+  overflow-x: auto;
+}
+
+#bibtex pre code {
+  color: #e2e8f0;
+}
+
+/* Footer */
+.footer {
+  padding: 2rem 1.5rem;
+  background-color: #1e293b;
+  color: #94a3b8;
+}
+
+.footer a {
+  color: var(--accent-color);
+}
+
+.footer a:hover {
+  color: #e6b422;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .publication-title {
+    font-size: 1.75rem !important;
+  }
+
+  .title-second-line {
+    font-size: 0.85em;
+  }
+
+  .publication-links {
+    gap: 0.35rem;
+  }
+
+  .link-block .button {
+    font-size: 0.85rem;
+  }
+
+  .results-table {
+    font-size: 0.75rem;
+  }
+
+  .section {
+    padding: 2rem 1rem;
+  }
+
+  .axis-box {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Scroll behavior */
+html {
+  scroll-behavior: smooth;
+}

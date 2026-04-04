@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Are We Recognizing the Jaguar or Its Background?</title>
+  <meta name="description" content="A diagnostic framework for jaguar re-identification that detects shortcut learning via background context and laterality axes.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Are We Recognizing the Jaguar or Its Background?">
+  <meta property="og:description" content="A diagnostic framework for wildlife re-ID with two axes: background/foreground context ratio and mirror similarity.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="static/images/banner.jpg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Academicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="static/css/index.css">
+</head>
+
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            Are We Recognizing the Jaguar or Its Background?<br>
+            <span class="title-second-line">A Diagnostic Framework for Jaguar Re-Identification</span>
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="mailto:antonio.rueda-toicen@hpi.de">Antonio Rueda-Toicen</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="mailto:info@jaguaridproject.com">Abigail Allen Martin</a><sup>3,4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="mailto:daniil.morozov@tum.de">Daniil Morozov</a><sup>5,8</sup>,
+            </span>
+            <span class="author-block">
+              Matin Mahmood<sup>8</sup>,
+            </span>
+            <span class="author-block">
+              <a href="mailto:aleksandra.kudaeva@hpi.de">Alexandra Schild</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Shahabeddin Dayani<sup>6</sup>,
+            </span>
+            <span class="author-block">
+              Davide Panza<sup>7</sup>,
+            </span>
+            <span class="author-block">
+              <a href="mailto:gerard.demelo@hpi.de">Gerard de Melo</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Hasso Plattner Institute</span>
+            <span class="author-block"><sup>2</sup>NVIDIA</span>
+            <span class="author-block"><sup>3</sup>Jaguar ID Project</span>
+            <span class="author-block"><sup>4</sup>Universidade Federal de Mato Grosso</span>
+            <span class="author-block"><sup>5</sup>Technical University Munich</span>
+            <span class="author-block"><sup>6</sup>Helmholtz Zentrum Berlin</span>
+            <span class="author-block"><sup>7</sup>Freie Universit&auml;t Berlin</span>
+            <span class="author-block"><sup>8</sup>Hyper3Labs</span>
+          </div>
+
+          <!-- Links -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/JaguarIdentification" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/jaguaridentification/jaguars" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">&#129303;</span>
+                  <span>Dataset</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://www.kaggle.com/competitions/jaguar-re-id" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-kaggle"></i></span>
+                  <span>Kaggle R1</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://www.kaggle.com/competitions/round-2-jaguar-reidentification-challenge" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-kaggle"></i></span>
+                  <span>Kaggle R2</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://www.jaguaridproject.com/" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">&#128006;</span>
+                  <span>Jaguar ID Project</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser Image -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="static/images/banner.jpg" alt="Jaguar foreground-only cutouts from citizen-science photographs" class="teaser-image">
+    </div>
+  </div>
+</section>
+
+<!-- Abstract -->
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Jaguar re-identification (re-ID) from citizen-science imagery can look strong
+            on standard retrieval metrics while still relying on the wrong evidence &mdash; such
+            as background context or silhouette shape &mdash; instead of the coat pattern that
+            defines identity. We introduce a diagnostic framework for wildlife re-ID with
+            two axes: a leakage-controlled context ratio,
+            <em>background/foreground</em>, computed from inpainted background-only versus
+            foreground-only images, and a laterality diagnostic based on cross-flank
+            retrieval and mirror self-similarity. To make these diagnostics measurable, we
+            curate a Pantanal jaguar benchmark with per-pixel segmentation masks and an
+            identity-balanced evaluation protocol. We then use representative mitigation
+            families &mdash; ArcFace fine-tuning, anti-symmetry regularization, and Lorentz
+            hyperbolic embeddings &mdash; as case studies under the same evaluation lens. The
+            goal is not only to ask which model ranks best, but also what visual evidence
+            it uses to do so.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Key Contributions -->
+<section class="section" id="contributions">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Key Contributions</h2>
+    <div class="columns is-centered">
+      <div class="column is-10">
+        <div class="content">
+          <div class="contribution-item">
+            <h3 class="title is-5">C1 &mdash; Diagnostic Framework</h3>
+            <p>
+              Two diagnostic axes for wildlife re-ID with segmentation masks:
+              <strong>BG/FG</strong>, a leakage-controlled measure of context reliance computed
+              from inpainted backgrounds, and <strong>Mirror Similarity</strong>, a laterality
+              diagnostic for bilaterally asymmetric species. We show these axes are
+              complementary: excelling on one provides no guarantee about the other.
+            </p>
+          </div>
+          <div class="contribution-item">
+            <h3 class="title is-5">C2 &mdash; Jaguar Benchmark with Segmentation Masks</h3>
+            <p>
+              A citizen-science Pantanal jaguar dataset with <strong>1,895 RGBA images</strong>,
+              per-pixel segmentation masks, and <strong>31 identified individuals</strong>,
+              with a reproducible evaluation protocol via two public
+              <a href="https://www.kaggle.com/competitions/jaguar-re-id">Kaggle</a>
+              <a href="https://www.kaggle.com/competitions/round-2-jaguar-reidentification-challenge">challenges</a>
+              using identity-balanced mAP as the official metric.
+              The dataset is publicly available on
+              <a href="https://huggingface.co/datasets/jaguaridentification/jaguars">Hugging Face</a>.
+            </p>
+          </div>
+          <div class="contribution-item">
+            <h3 class="title is-5">C3 &mdash; Empirical Audit of Mitigation Families</h3>
+            <p>
+              We evaluate representative mitigation families &mdash; ArcFace fine-tuning,
+              anti-symmetry regularization, and Lorentz hyperbolic embeddings &mdash;
+              as case studies under the two-axis diagnostic framework and report
+              their accuracy&ndash;robustness trade-offs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Diagnostic Framework -->
+<section class="section" id="framework">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Diagnostic Framework</h2>
+    <div class="columns is-centered">
+      <div class="column is-10">
+        <div class="content has-text-centered">
+          <img src="static/images/fig1_modes.png"
+               alt="Six diagnostic image variants: original full RGB, silhouette, background with silhouette, inpainted background, foreground cutout, and mirrored cutout"
+               class="framework-figure">
+          <p class="has-text-justified">
+            <strong>Six diagnostic image variants</strong> derived from a single
+            citizen-science photograph using its SAM-3 alpha mask.
+            <strong>(A1)</strong> Original full RGB input.
+            <strong>(A2)</strong> Binary silhouette (alpha channel).
+            <strong>(B1)</strong> Background with silhouette: foreground replaced by a black
+            silhouette, retaining background context and shape cues.
+            <strong>(B2)</strong> Inpainted: foreground removed by FLUX.1-Fill
+            generative inpainting, eliminating the silhouette-shaped hole for
+            leakage-controlled BG/FG evaluation.
+            <strong>(C1)</strong> Foreground cutout (background removed), isolating coat pattern.
+            <strong>(C2)</strong> Horizontally flipped mirror cutout, used for laterality analysis.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two Axes Explanation -->
+    <div class="columns is-centered">
+      <div class="column is-5">
+        <div class="box axis-box">
+          <h3 class="title is-5">Axis 1: Background Context Ratio (BG/FG)</h3>
+          <p>
+            Measures how much a model relies on background context versus coat pattern.
+            Computed as mAP(background_inpainted) / mAP(foreground_only) using
+            identity-balanced macro mAP. Lower values indicate more pattern-focused models.
+          </p>
+          <p class="has-text-centered">
+            <strong>BG/FG &lt; 0.95</strong>: Low risk &nbsp;|&nbsp;
+            <strong>0.95&ndash;1.10</strong>: Medium &nbsp;|&nbsp;
+            <strong>&gt; 1.10</strong>: High risk
+          </p>
+        </div>
+      </div>
+      <div class="column is-5">
+        <div class="box axis-box">
+          <h3 class="title is-5">Axis 2: Mirror Similarity</h3>
+          <p>
+            Measures laterality awareness for species with asymmetric bilateral patterns.
+            Jaguar rosettes differ between left and right flanks, so a horizontally flipped
+            image depicts an individual that does not exist. High mirror similarity
+            indicates the model collapses left&ndash;right flank differences.
+          </p>
+          <p class="has-text-centered">
+            <strong>&lt; 0.85</strong>: Aware &nbsp;|&nbsp;
+            <strong>0.85&ndash;0.96</strong>: Moderate &nbsp;|&nbsp;
+            <strong>&gt; 0.96</strong>: Strong shortcut
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Key Results -->
+<section class="section" id="results">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Key Results</h2>
+
+    <div class="columns is-centered">
+      <div class="column is-10">
+        <h3 class="title is-5">Frozen Baseline Benchmark</h3>
+        <p class="content">
+          16 models evaluated on three input variants (full RGB, foreground-only, inpainted background),
+          yielding 48 test-set evaluations. Models ranked by identity-balanced (macro) mAP on full RGB.
+        </p>
+
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth results-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Model</th>
+                <th>mAP (macro)</th>
+                <th>BG/FG</th>
+                <th>Mirror Sim</th>
+                <th>Mirror Tier</th>
+                <th>Architecture</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>MiewID-MSv3</td><td>0.303</td><td class="bgfg-low">0.59</td><td>0.746</td><td>T1: Aware</td><td>EffNetV2-M</td></tr>
+              <tr><td>2</td><td>DINOv3-ViT CLS</td><td>0.298</td><td class="bgfg-low">0.77</td><td>0.963</td><td>T2: Moderate</td><td>ViT-S/16</td></tr>
+              <tr><td>3</td><td>MiewID-MSv2</td><td>0.297</td><td class="bgfg-low">0.52</td><td>0.752</td><td>T1: Aware</td><td>EffNetV2-M</td></tr>
+              <tr><td>4</td><td>HotSpotter+VLAD</td><td>0.288</td><td class="bgfg-low">0.54</td><td>1.000</td><td>T4: Symmetric</td><td>SIFT+VLAD</td></tr>
+              <tr><td>5</td><td>EVA-02</td><td>0.281</td><td class="bgfg-low">0.66</td><td>0.997</td><td>T4: Symmetric</td><td>ViT-L/14</td></tr>
+              <tr><td>6</td><td>DINOv3-ViT Pooled</td><td>0.277</td><td class="bgfg-low">0.82</td><td>0.979</td><td>T3: Strong</td><td>ViT-S/16</td></tr>
+              <tr><td>7</td><td>C-RADIO-v4</td><td>0.255</td><td class="bgfg-low">0.78</td><td>0.997</td><td>T4: Symmetric</td><td>ViT-CPE</td></tr>
+              <tr><td>8</td><td>MegaDescriptor</td><td>0.249</td><td class="bgfg-low">0.77</td><td>0.914</td><td>T2: Moderate</td><td>ViT</td></tr>
+              <tr><td>9</td><td>I-JEPA</td><td>0.238</td><td class="bgfg-high">1.17</td><td>0.968</td><td>T3: Strong</td><td>ViT-H/14</td></tr>
+              <tr><td>10</td><td>ResNet50</td><td>0.218</td><td class="bgfg-low">0.90</td><td>0.958</td><td>T2: Moderate</td><td>CNN</td></tr>
+              <tr><td>11</td><td>ResNet152</td><td>0.218</td><td class="bgfg-low">0.94</td><td>0.961</td><td>T3: Strong</td><td>CNN</td></tr>
+              <tr><td>12</td><td>ConvNeXtV2-Base</td><td>0.210</td><td class="bgfg-med">1.00</td><td>0.985</td><td>T3: Strong</td><td>CNN</td></tr>
+              <tr><td>13</td><td>DINOv3-ConvNeXt Pooled</td><td>0.209</td><td class="bgfg-low">0.92</td><td>0.981</td><td>T3: Strong</td><td>ConvNeXt-S</td></tr>
+              <tr><td>14</td><td>DINOv3-ConvNeXt CLS</td><td>0.208</td><td class="bgfg-low">0.91</td><td>0.984</td><td>T3: Strong</td><td>ConvNeXt-S</td></tr>
+              <tr><td>15</td><td>EfficientNetV2-M</td><td>0.200</td><td class="bgfg-med">1.03</td><td>0.981</td><td>T3: Strong</td><td>CNN</td></tr>
+              <tr><td>16</td><td>meFeM-B</td><td>0.186</td><td class="bgfg-high">1.12</td><td>0.970</td><td>T3: Strong</td><td>ViT-B</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Figures Row -->
+    <div class="columns is-centered">
+      <div class="column is-5">
+        <figure class="image">
+          <img src="static/images/fig3_bgfg_bar_chart.png"
+               alt="Foreground vs inpainted background mAP across frozen models">
+          <figcaption class="has-text-centered is-size-7 mt-2">
+            <strong>Foreground vs. inpainted background mAP.</strong> Green: foreground-only mAP; red: inpainted background-only mAP. Models sorted by BG/FG ratio.
+          </figcaption>
+        </figure>
+      </div>
+      <div class="column is-5">
+        <figure class="image">
+          <img src="static/images/fig5_bgfg_vs_mirror_scatter.png"
+               alt="BG/FG vs Mirror Similarity scatter plot">
+          <figcaption class="has-text-centered is-size-7 mt-2">
+            <strong>Relationship between shortcut axes.</strong> No clear monotonic association (Spearman &rho; = 0.152, p = 0.605). Models robust on one axis can be brittle on the other.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Takeaways -->
+    <div class="columns is-centered">
+      <div class="column is-10">
+        <div class="content">
+          <h3 class="title is-5">Key Findings</h3>
+          <ul>
+            <li><strong>3 of 14 frozen models</strong> have BG/FG &ge; 1.0, meaning they extract more identity signal from background context than from coat pattern.</li>
+            <li><strong>Wildlife-specific pre-training</strong> is the primary driver of robustness: MiewID-MSv2 and the generic EfficientNetV2-M share the same backbone, yet their BG/FG ratios differ sharply (0.52 vs. 1.03).</li>
+            <li><strong>High accuracy does not guarantee low shortcut reliance.</strong> DINOv3-ViT CLS reaches 0.298 macro mAP with BG/FG 0.77.</li>
+            <li><strong>The two diagnostic axes are complementary</strong>: EVA-02 has low BG/FG (0.66) but near-perfect mirror symmetry (0.997); I-JEPA has high BG/FG (1.17) yet lower mirror similarity (0.968).</li>
+            <li><strong>Flip augmentation does not improve cross-flank retrieval</strong> and reduces within-flank accuracy by 12%.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cross-Flank Retrieval -->
+<section class="section" id="crossflank">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Cross-Flank Retrieval</h2>
+    <div class="columns is-centered">
+      <div class="column is-10">
+        <div class="content has-text-justified">
+          <p>
+            Jaguar coat patterns are bilaterally asymmetric: the rosette layout on the left flank
+            differs from the right. A horizontal flip of a left-flank image is <em>not</em> a real
+            observation of that animal's right flank. We test whether flip augmentation helps
+            cross-flank matching by training matched ArcFace+MiewID-MSv2 models with and without
+            horizontal flips.
+          </p>
+        </div>
+
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth results-table">
+            <thead>
+              <tr>
+                <th rowspan="2">Model</th>
+                <th colspan="2">Within-flank</th>
+                <th colspan="2">Cross-flank</th>
+                <th rowspan="2">Cross/Within</th>
+              </tr>
+              <tr>
+                <th>mAP</th>
+                <th>CMC@1</th>
+                <th>mAP</th>
+                <th>CMC@1</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ArcFace+MiewID (no flip)</td>
+                <td><strong>0.716</strong></td>
+                <td><strong>77.5%</strong></td>
+                <td>0.477</td>
+                <td>53.9%</td>
+                <td>0.666</td>
+              </tr>
+              <tr>
+                <td>ArcFace+MiewID (flip aug)</td>
+                <td>0.632</td>
+                <td>70.7%</td>
+                <td><strong>0.490</strong></td>
+                <td><strong>55.3%</strong></td>
+                <td>0.774</td>
+              </tr>
+              <tr class="delta-row">
+                <td>&Delta; (flip &minus; no flip)</td>
+                <td>&minus;0.084</td>
+                <td>&minus;6.8pp</td>
+                <td>+0.013</td>
+                <td>+1.4pp</td>
+                <td>+0.108</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            Cross-flank macro mAP is nearly identical between models (0.477 vs. 0.490),
+            while within-flank mAP drops from 0.716 to 0.632 with flips. The higher cross/within
+            ratio for the flip model is driven entirely by its lower within-flank performance,
+            not by improved cross-flank matching.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Laterality Figure -->
+<section class="section" id="laterality">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <figure class="image">
+          <img src="static/images/fig6_laterality_ratio.png"
+               alt="Laterality ratio across models">
+          <figcaption class="has-text-centered is-size-7 mt-2">
+            <strong>Laterality ratio across frozen models.</strong>
+            Wildlife-specific pre-training (MiewID) is the primary determinant of laterality awareness,
+            with a gap of 0.162 between MiewID and the next-best non-MiewID model.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BibTeX -->
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+    <pre><code>@article{ruedatoicen2026jaguar,
+  title     = {Are We Recognizing the Jaguar or Its Background?
+               A Diagnostic Framework for Jaguar Re-Identification},
+  author    = {Rueda-Toicen, Antonio and Allen Martin, Abigail and
+               Morozov, Daniil and Mahmood, Matin and
+               Schild, Alexandra and Dayani, Shahabeddin and
+               Panza, Davide and de Melo, Gerard},
+  journal   = {arXiv preprint arXiv:XXXX.XXXXX},
+  year      = {2026}
+}</code></pre>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            This website is licensed under a
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website template borrowed from <a href="https://nerfies.github.io">Nerfies</a> and
+            <a href="https://gorilla-watch.github.io">Gorilla Watch</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="static/js/index.js"></script>
+</body>
+</html>
