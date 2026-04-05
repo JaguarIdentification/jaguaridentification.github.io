@@ -102,6 +102,12 @@
                 </a>
               </span>
               <span class="link-block">
+                <a href="https://hyper3labs-jaguar-hyperview-multigeometry.hf.space/" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">&#129303;</span>
+                  <span>HF Space</span>
+                </a>
+              </span>
+              <span class="link-block">
                 <a href="https://www.kaggle.com/competitions/jaguar-re-id" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fab fa-kaggle"></i></span>
                   <span>Kaggle R1</span>
@@ -286,7 +292,7 @@
           <img src="static/images/fig5_bgfg_vs_mirror_scatter.png"
                alt="BG/FG vs Mirror Similarity scatter plot">
           <figcaption class="has-text-centered is-size-7 mt-2">
-            <strong>Relationship between shortcut axes.</strong> No clear monotonic association (Spearman &rho; = 0.152, p = 0.605). Models robust on one axis can be brittle on the other.
+            <strong>Relationship between shortcut axes.</strong> No clear monotonic association (Spearman &rho; = 0.307, p = 0.265; N=15). Models robust on one axis can be brittle on the other.
           </figcaption>
         </figure>
       </div>
@@ -456,6 +462,36 @@
             with a gap of 0.162 between MiewID and the next-best non-MiewID model.
           </figcaption>
         </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Interactive Demo -->
+<section class="section" id="interactive-demo">
+  <div class="container is-max-desktop interactive-demo-container">
+    <div class="columns is-centered">
+      <div class="column is-10">
+        <h2 class="title is-3 has-text-centered">Demo: Inspection of the Embedding Space</h2>
+        <div class="interactive-demo-card">
+          <p class="content has-text-centered interactive-demo-copy">
+            Explore the HyperView Space directly in the page to compare jaguar embeddings across model geometries.
+          </p>
+          <div class="interactive-demo-shell">
+            <iframe
+              src="https://hyper3labs-jaguar-hyperview-multigeometry.hf.space"
+              title="Jaguar HyperView multigeometry demo"
+              class="interactive-demo-frame"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <p class="has-text-centered interactive-demo-link">
+            <a href="https://hyper3labs-jaguar-hyperview-multigeometry.hf.space" target="_blank" rel="noopener noreferrer">
+              Open the demo in a new tab
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   </div>
